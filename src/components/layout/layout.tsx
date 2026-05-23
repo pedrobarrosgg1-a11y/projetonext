@@ -1,4 +1,5 @@
 import { Header } from "../header"
+import { Footer } from "../footer/footer.tsx"
 
 type LayoutProps = {
     children: React.ReactNode;
@@ -11,10 +12,7 @@ export const Layout = ({children}: LayoutProps) => {
             <main className="flex-1 flex flex-col mb-12">
             {children}
             </main>
-
-            <footer>
-                
-            </footer>
+            <Footer />
         </div>
     )
 }
