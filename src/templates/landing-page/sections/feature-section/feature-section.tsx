@@ -48,7 +48,7 @@ export const FeatureSection = () => {
           <div className="flex flex-col items-center justify-center w-full">
             <div className="w-full max-w-md overflow-hidden">
               <Image
-                src="/feature-section.svg"
+                src="/footer-bg.svg"
                 alt="Features"
                 width={440}
                 height={330}
