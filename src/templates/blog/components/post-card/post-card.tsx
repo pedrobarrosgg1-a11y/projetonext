@@ -70,5 +70,8 @@ export const PostCard = ({
         </div>
       </div>
     </Link>
+
+    
+    
   );
 };
