@@ -1,14 +1,41 @@
 import { Search } from "@/src/components/search/search";
-import { useRouter } from 'next/router';
-import { PostCard } from './components/post-card';
-import { PostGridCard } from './components/post-grid-card';
+import { useRouter } from "next/router";
+import { PostCard } from "./components/post-card";
+import { PostGridCard } from "./components/post-grid-card";
 
-export function BlogList() {
+type Author = {
+  name: string;
+  avatar: string;
+};
+
+type Post = {
+  slug: string;
+  title: string;
+  description: string;
+  date: string;
+  image?: string;
+  author: Author;
+};
+
+type BlogListProps = {
+  posts: Post[];
+};
+
+export function BlogList({ posts }: BlogListProps) {
   const router = useRouter();
   const query = router.query.q as string;
   const pageTitle = query
     ? `Resultados de busca para "${query}"`
-    : 'Dicas e estratégias para impulsionar seu negócio';
+    : "Dicas e estratégias para impulsionar seu negócio";
+
+  // Se existir um texto de busca (query),
+  // filtra os posts que possuem esse texto no título.
+  // Caso contrário, retorna todos os posts.
+  const filteredPosts = query
+    ? posts.filter((post) =>
+        post.title.toLowerCase().includes(query.toLowerCase()),
+      )
+    : posts;
 
   return (
     <div className="flex flex-col py-24 flex-grow h-full">
@@ -32,17 +59,20 @@ export function BlogList() {
 
       {/* Listagem de posts */}
       <PostGridCard>
-        <PostCard
-          title="Transformando seu negócio em uma loja virtual"
-          description="Se você está buscando uma maneira simples e eficaz de vender seus produtos online..."
-          date="20/12/2024"
-          slug="transformando"
-          image="/assets/primeiro-post.svg"
-          author={{
-            avatar: '/assets/aspen-dokidis.svg',
-            name: 'Aspen Dokidis',
-          }}
-        />
+        {filteredPosts.map((post) => (
+          <PostCard
+            key={post.slug}
+            title={post.title}
+            description={post.description}
+            date={post.date}
+            slug={post.slug}
+            image={post.image ?? "/assets/primeiro-post.svg"}
+            author={{
+              avatar: post.author.avatar,
+              name: post.author.name,
+            }}
+          />
+        ))}
       </PostGridCard>
     </div>
   );
