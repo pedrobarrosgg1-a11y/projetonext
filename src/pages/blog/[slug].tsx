@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -7,7 +8,8 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import type { Post } from "@/src/lib/posts";
-import Image from "next/image";
+
+import { Avatar } from "@/src/components/avatar";
 
 type PostPageProps = {
   post: Post | null;
@@ -21,6 +23,13 @@ export default function PostPage({ post }: PostPageProps) {
       </main>
     );
   }
+  const [day, month, year] = post.date.split("/");
+  const publishedDate = new Date(
+  Number(year),
+  Number(month) - 1,
+  Number(day),
+).toLocaleDateString("pt-BR");
+  const timeDateTime = `${year}-${month}-${day}`;
 
   return (
     <main className="mt-32 text-white">
@@ -50,6 +59,23 @@ export default function PostPage({ post }: PostPageProps) {
               className="object-cover"
             />
           </figure>
+
+          <header className="p-4 md:p-6 lg:p-12 pb-0">
+            <h1 className="mb-6 text-balance text-heading-lg md:text-heading-xl lg:text-heading-xl">
+              {post?.title}
+            </h1>
+
+            <Avatar.Container>
+              <Avatar.Image src={post?.author.avatar} alt={post?.title} />
+              <Avatar.Content>
+                <Avatar.Title>{post?.author.name}</Avatar.Title>
+                <Avatar.Description>
+                  Publicado em {""}
+                  <time dateTime={post.date}>{publishedDate}</time>
+                </Avatar.Description>
+              </Avatar.Content>
+            </Avatar.Container>
+          </header>
         </article>
       </div>
     </main>
