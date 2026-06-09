@@ -16,6 +16,9 @@ export type Post = {
   date: string;
   image?: string;
   author: Author;
+  body: {
+    raw: string;
+  };
 };
 
 export function getAllPosts(): Post[] {
@@ -28,7 +31,7 @@ export function getAllPosts(): Post[] {
 
     const source = fs.readFileSync(filePath, "utf8");
 
-    const { data } = matter(source);
+    const { data, content } = matter(source);
 
     return {
       slug,
@@ -39,6 +42,9 @@ export function getAllPosts(): Post[] {
       author: {
         name: data.author?.name ?? "",
         avatar: data.author?.avatar ?? "/assets/primeiro-post.svg",
+      },
+      body: {
+        raw: content,
       },
     };
   });
