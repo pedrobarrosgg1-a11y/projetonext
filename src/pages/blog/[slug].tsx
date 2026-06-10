@@ -11,6 +11,7 @@ import type { Post } from "@/src/lib/posts";
 
 import { Avatar } from "@/src/components/avatar";
 import { Markdown } from "@/src/components/markdown";
+import { Button } from "@/src/components/layout/ui/button";
 
 type PostPageProps = {
   post: Post | null;
@@ -86,6 +87,23 @@ export default function PostPage({ post }: PostPageProps) {
               <Markdown content={post.body.raw} />
             </div>
           </article>
+
+          <aside className="space-y-6">
+            <div className="rounded-lg bg-gray-700 p-4 md:p-6">
+              <h2 className="mb-4 text-heading-xs text-gray-100">Compartilhar</h2>
+
+              <div className="space-y-3">
+                {[{ key: '1', providerName: 'LinkedIn'}].map((provider) =>(
+                  <Button 
+                    key={provider.key}
+                    variant="outline"
+                  >
+                    {provider.providerName}
+                  </Button>
+                ))}
+              </div>
+            </div>
+          </aside>
         </div>
       </div>
     </main>
