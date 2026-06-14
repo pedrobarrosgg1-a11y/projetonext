@@ -18,9 +18,9 @@ type Post = {
   author: Author;
 };
 
-type BlogListProps = {
+export type BlogListProps = {
   posts: Post[];
-};
+}
 
 export function BlogList({ posts }: BlogListProps) {
   const router = useRouter();

@@ -15,7 +15,7 @@ import { Button } from "@/src/components/layout/ui/button";
 import { useShare } from "@/src/hooks";
 
 type PagePostProps = {
-  post?: Post | null;
+  post: Post;
 };
 
 export const PagePost = ({ post }: PagePostProps) => {

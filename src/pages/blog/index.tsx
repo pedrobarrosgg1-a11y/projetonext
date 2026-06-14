@@ -1,17 +1,18 @@
-import { BlogList } from "@/src/templates/blog/blog-list";
-import type { Post } from "@/src/lib/posts-types";
+import { BlogList, type BlogListProps } from "@/src/templates/blog/blog-list";
+import { GetStaticProps } from "next";
+import { getAllPosts } from "@/src/lib/posts";
 
-export default function BlogPage({ posts }: { posts: Post[] }) {
-  return <BlogList posts={posts} />;
+export default function BlogPage({posts}: BlogListProps) {
+  return <BlogList posts={posts}/>;
 }
 
-export async function getStaticProps() {
-  const { getAllPosts } = await import("@/src/lib/posts");
-  const posts = getAllPosts();
+export const getStaticProps = (async () => {
+  const sortedPosts = getAllPosts().sort(
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
   return {
     props: {
-      posts,
-    },
-  };
-}
+      posts: sortedPosts
+    }
+  }
+}) satisfies GetStaticProps<BlogListProps>
