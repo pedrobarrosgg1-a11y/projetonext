@@ -1,8 +1,21 @@
-import fs from "fs"
-import path from "path";
-import matter from "gray-matter";
+// Carrega módulos Node apenas em tempo de execução para evitar inclusão no bundle do cliente.
+const nodeRequire = (name: string) => {
+  try {
+    // Evita que bundlers façam análise estática de `require`.
+    // eslint-disable-next-line no-eval
+    return eval("require")(name);
+  } catch (e) {
+    return null;
+  }
+};
 
-const postsDirectory = path.join(process.cwd(), "posts");
+const matter = nodeRequire("gray-matter");
+
+const postsDirectory = (() => {
+  const path = nodeRequire("path");
+  if (!path) return null;
+  return path.join(process.cwd(), "posts");
+})();
 
 type Author = {
   name: string;
@@ -22,9 +35,13 @@ export type Post = {
 };
 
 export function getAllPosts(): Post[] {
+  const fs = nodeRequire("fs");
+  const path = nodeRequire("path");
+  if (!fs || !path || !postsDirectory || !matter) return [];
+
   const files = fs.readdirSync(postsDirectory);
 
-  const posts = files.map((file) => {
+  const posts = files.map((file: string) => {
     const slug = file.replace(".mdx", "");
 
     const filePath = path.join(postsDirectory, file);
