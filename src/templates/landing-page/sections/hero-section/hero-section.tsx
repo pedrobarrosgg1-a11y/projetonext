@@ -14,14 +14,14 @@ export const HeroSection = () => {
 
           <div className="flex flex-col items-center justify-center gap-4 md:items-start lg:items-start">
             <div>
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2 transition-all duration-300 hover:-translate-y-1 hover:scale-105">
                 <Clock className="text-cyan-100 h-4 w-4" />
                 <span className="text-body-md text-gray-200">
                   Crie o seu site em menos de 5 minutos
                 </span>
               </div>
 
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2 transition-all duration-300 hover:-translate-y-1 hover:scale-105">
                 <Store className="text-cyan-100 h-4 w-4" />
                 <span className="text-body-md text-gray-200">
                   Acompanhe e otimize seu negócio online
@@ -30,7 +30,7 @@ export const HeroSection = () => {
             </div>
 
             <div className="text-white flex flex-col gap-2 mt-5 items-center md:items-start ls:items-start">
-              <Button className="rounded-full w-fit" asChild>
+              <Button className="rounded-full w-fit transition-all duration-300 hover:scale-105" asChild>
                 <Link href="/criar-loja">
                   Criar loja grátis
                   <ArrowRight />

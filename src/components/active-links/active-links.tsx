@@ -17,7 +17,7 @@ export const ActiveLink = ({ children, href, ...rest }: ActiveLinkProps) => {
       {...rest}
       href={href}
       className={cn(
-        'text-action-sm transition-colors hover:text-blue-200',
+        'text-action-sm transition-colors hover:text-blue-200 transition-all duration-300 hover:-translate-y-1 hover:scale-105',
         isActive ? 'text-blue-200' : 'text-gray-100'
       )}
     >

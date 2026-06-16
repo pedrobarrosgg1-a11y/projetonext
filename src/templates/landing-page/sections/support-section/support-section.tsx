@@ -12,7 +12,7 @@ export const SupportSection = () => {
 
         <div className="grid gap-6 md:grid-cols-3">
           {/* Primeiro Card */}
-          <div className="flex flex-col text-left gap-2 rounded-lg p-6 md:p-12 bg-blue-400">
+          <div className="flex flex-col text-left gap-2 rounded-lg p-6 md:p-12 bg-blue-400 transition-all duration-300 hover:-translate-y-1 hover:scale-105">
             <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-blue-300 mb-4">
               <PaintbrushVertical className="h-6 w-6 text-white" />
             </div>
@@ -26,7 +26,7 @@ export const SupportSection = () => {
           </div>
 
           {/* Segundo Card */}
-          <div className="flex flex-col text-left gap-2 rounded-lg p-6 md:p-12 bg-cyan-300">
+          <div className="flex flex-col text-left gap-2 rounded-lg p-6 md:p-12 bg-cyan-300 transition-all duration-300 hover:-translate-y-1 hover:scale-105">
             <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-cyan-200 mb-4">
               <Store className="h-6 w-6 text-white" />
             </div>
@@ -40,7 +40,7 @@ export const SupportSection = () => {
           </div>
 
           {/* Terceiro Card */}
-          <div className="flex flex-col text-left gap-2 rounded-lg p-6 md:p-12 bg-blue-400">
+          <div className="flex flex-col text-left gap-2 rounded-lg p-6 md:p-12 bg-blue-400 transition-all duration-300 hover:-translate-y-1 hover:scale-105">
             <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-blue-300 mb-4">
               <HeartHandshake className="h-6 w-6 text-white" />
             </div>

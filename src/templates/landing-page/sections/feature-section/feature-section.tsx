@@ -37,7 +37,7 @@ export const FeatureSection = () => {
 
             <Button
               asChild
-              className="w-fit rounded-full hidden mt-4 md:mt-auto md:flex"
+              className="w-fit rounded-full hidden mt-4 md:mt-auto md:flex transition-all duration-300 hover:scale-105"
             >
               <Link href="/criar-loja">
                 Criar loja grátis
@@ -52,7 +52,7 @@ export const FeatureSection = () => {
                 alt="Features"
                 width={440}
                 height={330}
-                className="object-contain w-full"
+                className="object-contain w-full transition-all duration-300 hover:-translate-y-1 hover:scale-105"
               />
             </div>
             <Button

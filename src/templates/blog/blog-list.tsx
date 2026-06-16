@@ -75,6 +75,7 @@ export function BlogList({ posts }: BlogListProps) {
               author={{
                 avatar: post.author.avatar,
                 name: post.author.name,
+              
               }}
             />
           ))}

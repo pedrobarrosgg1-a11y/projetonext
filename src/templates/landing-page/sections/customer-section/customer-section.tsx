@@ -29,17 +29,17 @@ export const CustomerStorySection = () => {
           Quem utiliza, aprova!
         </h2>
 
-        <div className="grid gap-8 md:grid-cols-2">
+        <div className="grid gap-8 md:grid-cols-2 ">
           {customerStories.map((customerStory) => (
             <div
               key={customerStory.author.name}
-              className="flex flex-col gap-6 rounded-lg bg-gray-500 p-6 md:p-12"
+              className="flex flex-col gap-6 rounded-lg bg-gray-500 p-6 md:p-12 transition-all duration-300 hover:-translate-y-1 hover:scale-105"
             >
               <p className="text-balance text-gray-200">
                 {customerStory.content}
               </p>
 
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-3" >
                 <div className="relative h-10 w-10 overflow-hidden rounded-full">
                   <Image
                     src={customerStory.author.avatar}
@@ -50,7 +50,7 @@ export const CustomerStorySection = () => {
                 </div>
 
                 <div className="flex flex-col">
-                  <strong className="text-gray-200 text-sm">
+                  <strong className="text-gray-200 text-sm transition-all duration-300 hover:-translate-y-1 hover:scale-105">
                     {customerStory.author.name}
                   </strong>
                   <span className="text-xs text-gray-300">

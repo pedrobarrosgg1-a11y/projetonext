@@ -17,7 +17,7 @@ export const CallToAction = () => {
             Crie uma loja online e inicie suas vendas ainda hoje
           </h2>
 
-          <Button variant="primary" asChild className="mt-6">
+          <Button variant="primary" asChild className="mt-6 transition-all duration-300 hover:scale-105">
             <Link href="/criar-loja">
               Criar loja grátis
               <ArrowRight />
