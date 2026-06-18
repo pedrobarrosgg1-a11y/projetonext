@@ -1,3 +1,4 @@
+'use client'
 import Link from "next/link";
 import Image from "next/image";
 import {
@@ -45,7 +46,7 @@ export const PagePost = ({ post }: PagePostProps) => {
       <div className="container space-y-8 px-4 md:px-8">
         <Breadcrumb>
           <BreadcrumbList>
-            <BreadcrumbItem>
+            <BreadcrumbItem className="transition-all duration-300 hover:scale-105">
               <BreadcrumbLink
                 render={() => <Link href="/blog">Blog</Link>}
                 className="text-action-sm"
@@ -111,7 +112,7 @@ export const PagePost = ({ post }: PagePostProps) => {
                     key={provider.provider}
                     onClick={() => provider.action()}
                     variant="outline"
-                    className="w-fit md:w-full justify-start gap-2"
+                    className="w-fit md:w-full justify-start gap-2 transition-all duration-300 hover:-translate-y-1 hover:scale-105"
                   >
                     {provider.icon}
                     <span className="hidden md:block">{provider.name}</span>
