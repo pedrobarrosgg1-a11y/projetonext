@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import Link from "next/link";
 import Image from "next/image";
 import {
@@ -12,8 +12,7 @@ import type { Post } from "@/src/lib/posts-types";
 
 import { Avatar } from "@/src/components/avatar";
 import { Markdown } from "@/src/components/markdown";
-import { Button } from "@/src/components/layout/ui/button";
-import { useShare } from "@/src/hooks";
+import { PostShare } from "./components/post-share";
 
 type PagePostProps = {
   post: Post;
@@ -21,11 +20,6 @@ type PagePostProps = {
 
 export const PagePost = ({ post }: PagePostProps) => {
   const postUrl = `https://site.set/blog/${post?.slug ?? ""}`;
-  const { shareButtons } = useShare({
-    url: postUrl,
-    title: post?.title,
-    text: post?.description,
-  });
 
   if (!post) {
     return (
@@ -100,27 +94,11 @@ export const PagePost = ({ post }: PagePostProps) => {
             </div>
           </article>
 
-          <aside className="space-y-6">
-            <div className="rounded-lg bg-gray-700">
-              <h2 className="hidden md:block mb-4 text-heading-xs text-gray-100">
-                Compartilhar
-              </h2>
-
-              <div className="flex justify-between md:flex-col gap-2">
-                {shareButtons.map((provider) => (
-                  <Button
-                    key={provider.provider}
-                    onClick={() => provider.action()}
-                    variant="outline"
-                    className="w-fit md:w-full justify-start gap-2 transition-all duration-300 hover:-translate-y-1 hover:scale-105"
-                  >
-                    {provider.icon}
-                    <span className="hidden md:block">{provider.name}</span>
-                  </Button>
-                ))}
-              </div>
-            </div>
-          </aside>
+          <PostShare
+            url={postUrl}
+            title={post?.title}
+            description={post?.description}
+          />
         </div>
       </div>
     </main>
