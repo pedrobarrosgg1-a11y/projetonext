@@ -1,6 +1,6 @@
-import type { Metadata } from "next";
-import { getAllPosts } from "@/src/lib/posts";
 import { BlogList } from "@/src/templates/blog";
+import { getAllPosts } from "@/src/lib/posts";
+import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Blog",

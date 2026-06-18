@@ -1,7 +1,7 @@
-import { getAllPosts } from "@/src/lib/posts";
-import { notFound } from "next/navigation";
 import { PagePost } from "@/src/templates/blog/post-page";
+import { getAllPosts } from "@/src/lib/posts";
 import { Metadata } from "next";
+import { notFound } from "next/navigation";
 
 type BlogPostPageProps = {
   params: Promise<{
