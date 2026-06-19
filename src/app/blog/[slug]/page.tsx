@@ -3,18 +3,17 @@ import { getAllPosts } from "@/src/lib/posts";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-type BlogPostPageProps = {
-  params: {
+type BlogPostPage = {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 };
 
 export async function generateMetadata({
   params,
-}: BlogPostPageProps): Promise<Metadata> {
-  const posts = getAllPosts();
-
-  const post = posts.find((post) => post.slug === params.slug);
+}: BlogPostPage): Promise<Metadata> {
+  const { slug } = await params;
+  const post = getAllPosts().find((post) => post.slug === slug);
 
   if (!post) {
     return {};
@@ -24,32 +23,26 @@ export async function generateMetadata({
     title: post.title,
     description: post.description,
     authors: [{ name: post.author.name }],
-    robots: "index, follow",
+    robots: 'index, follow',
     openGraph: {
-      title: post.title,
-      description: post.description,
-      images: post.image ? [post.image] : undefined,
+      images: post.image ? [post.image] : [],
     },
   };
 }
 
-// Como os posts são estáticos, não há necessidade de ISR
-// export const revalidate = 60;
+export const revalidate = 60;
 
 export async function generateStaticParams() {
   const posts = getAllPosts();
-
   return posts.map((post) => ({
     slug: post.slug,
   }));
 }
 
-export default async function BlogPostPage({
-  params,
-}: BlogPostPageProps) {
-  const posts = getAllPosts();
 
-  const post = posts.find((post) => post.slug === params.slug);
+export default async function BlogPostPage({ params }: BlogPostPage) {
+  const { slug } = await params;
+  const post = getAllPosts().find((post) => post.slug === slug);
 
   if (!post) {
     notFound();
