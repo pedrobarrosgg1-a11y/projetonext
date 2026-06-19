@@ -104,29 +104,3 @@ export const PagePost = ({ post }: PagePostProps) => {
     </main>
   );
 };
-
-export async function getStaticPaths() {
-  const { getAllPosts } = await import("@/src/lib/posts");
-  const posts = getAllPosts();
-
-  return {
-    paths: posts.map((post) => ({ params: { slug: post.slug } })),
-    fallback: false,
-  };
-}
-
-export async function getStaticProps({
-  params,
-}: {
-  params: { slug?: string };
-}) {
-  const { getAllPosts } = await import("@/src/lib/posts");
-  const slug = typeof params.slug === "string" ? params.slug : "";
-  const post = getAllPosts().find((post) => post.slug === slug) ?? null;
-
-  return {
-    props: {
-      post,
-    },
-  };
-}

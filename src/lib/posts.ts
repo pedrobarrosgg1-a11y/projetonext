@@ -1,26 +1,13 @@
-// Carrega módulos Node apenas em tempo de execução para evitar inclusão no bundle do cliente.
-const nodeRequire = (name: string) => {
-  try {
-    // Evita que bundlers façam análise estática de `require`.
-    // eslint-disable-next-line no-eval
-    return eval("require")(name);
-  } catch (e) {
-    return null;
-  }
-};
-
-const matter = nodeRequire("gray-matter");
-
-const postsDirectory = (() => {
-  const path = nodeRequire("path");
-  if (!path) return null;
-  return path.join(process.cwd(), "posts");
-})();
+﻿import fs from "fs";
+import path from "path";
+import matter from "gray-matter";
 
 type Author = {
   name: string;
   avatar: string;
 };
+
+const postsDirectory = path.join(process.cwd(), "posts");
 
 export type Post = {
   slug: string;
@@ -35,36 +22,29 @@ export type Post = {
 };
 
 export function getAllPosts(): Post[] {
-  const fs = nodeRequire("fs");
-  const path = nodeRequire("path");
-  if (!fs || !path || !postsDirectory || !matter) return [];
+  const files = fs
+    .readdirSync(postsDirectory)
+    .filter((file) => path.extname(file).toLowerCase() === ".mdx");
 
-  const files = fs.readdirSync(postsDirectory);
-
-  const posts = files.map((file: string) => {
-    const slug = file.replace(".mdx", "");
-
+  return files.map((file: string) => {
+    const slug = path.basename(file, path.extname(file));
     const filePath = path.join(postsDirectory, file);
-
     const source = fs.readFileSync(filePath, "utf8");
-
     const { data, content } = matter(source);
 
     return {
       slug,
-      title: data.title,
-      description: data.description,
-      date: data.date,
-      image: data.image,
+      title: String(data.title ?? ""),
+      description: String(data.description ?? ""),
+      date: String(data.date ?? ""),
+      image: data.image ? String(data.image) : undefined,
       author: {
-        name: data.author?.name ?? "",
-        avatar: data.author?.avatar ?? "/assets/primeiro-post.svg",
+        name: String(data.author?.name ?? ""),
+        avatar: String(data.author?.avatar ?? "/assets/primeiro-post.svg"),
       },
       body: {
-        raw: content,
+        raw: String(content),
       },
     };
   });
-
-  return posts;
 }
