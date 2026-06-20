@@ -8,7 +8,8 @@
   <a href="#-tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#-projeto">Projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#-aprendizado">Aprendizado</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#memo-licença">Licença</a>
+  <a href="#-deploy">Deploy do Projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#memo-licença">Licença</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
 </p>
 
 <p align="center">
@@ -17,9 +18,6 @@
 
 <br>
 
-<p align="center">
-  <img alt="Preview do projeto" src="" width="100%">
-</p>
 
 ## 🚀 Tecnologias
 
@@ -71,9 +69,21 @@ Neste projeto coloquei em prática e aprofundei diversos conceitos essenciais de
 
 Adorei construir esse projeto — ele consolidou muitos conceitos práticos e me deixou motivado a avançar em rotas avançadas do Next.js, testes e otimizações de performance.
 
+
+## 🚀 Deploy
+[![Vercel](https://img.shields.io/badge/Vercel-Deploy-black?logo=vercel)](https://projetonext-ochre.vercel.app/)
+
+O site está hospedado no Vercel e está disponível em: [https://projetonext-ochre.vercel.app/](https://projetonext-ochre.vercel.app/)
+
+- Host: Vercel (deploy contínuo a partir do repositório Git).  
+- Link público: https://projetonext-ochre.vercel.app/  
+- Comando de build usado pelo Vercel: `npm run build` (definido em `package.json`).  
+- Branch de deploy: branch principal do repositório.  
+- Variáveis de ambiente: adicione no painel do Vercel caso o projeto precise (ex.: chaves de API).  
+- Preview deploys: PRs e commits geram previews automáticos no Vercel.  
+
 ## :memo: Licença
 
 Esse projeto está sob a licença MIT.
 
----
 
