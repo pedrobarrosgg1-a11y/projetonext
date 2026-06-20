@@ -1,9 +1,47 @@
-<<<<<<< HEAD
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+<h1 align="center"> 🔗 Site.Set - Next.Js </h1>
 
-## Getting Started
+<p align="center">
+  Site.Set é uma landing page moderna desenvolvida para apresentar uma plataforma de criação de lojas online voltada para afiliados. O site tem como objetivo mostrar que é possível montar uma loja digital de forma rápida, simples e personalizada, sem necessidade de cartão de crédito e com suporte dedicado.
+</p>
 
-First, run the development server:
+<p align="center">
+  <a href="#-tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-projeto">Projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-aprendizado">Aprendizado</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#memo-licença">Licença</a>
+</p>
+
+<p align="center">
+  <img alt="License" src="https://img.shields.io/static/v1?label=license&message=MIT&color=49AA26&labelColor=000000">
+</p>
+
+<br>
+
+<p align="center">
+  <img alt="Preview do projeto" src="" width="100%">
+</p>
+
+## 🚀 Tecnologias
+
+Esse projeto foi desenvolvido com as seguintes tecnologias:
+
+[![NEXT_JS](https://img.shields.io/badge/NEXT-111?style=for-the-badge&logo=next.js&logoColor-)](https://nextjs.org/docs)
+[![REACT](https://img.shields.io/badge/REACT-111?style=for-the-badge&logo=react&logoColor=)](https://react.dev/learn)
+[![TYPESCRIPT](https://img.shields.io/badge/TypeScript-111?style=for-the-badge&logo=TypeScript&logoColor=)](https://www.typescriptlang.org/docs/)
+[![TAILWINDCSS](https://img.shields.io/badge/Tailwind_CSS-111?style=for-the-badge&logo=tailwind-css&logoColor=)](https://tailwindcss.com/docs)
+[![POSTCSS](https://img.shields.io/badge/postcss-111?style=for-the-badge&logo=postcss&logoColor=)](https://postcss.org/docs/)
+
+
+## 💻 Projeto
+
+O site-blog é um blog pessoal construído com Next.js e TypeScript, pensado para publicar posts em Markdown/MDX com uma UI componentizada e layout responsivo. Ideal para compartilhar artigos, mostrar projetos e centralizar conteúdos com navegação clara entre lista de posts e páginas individuais.
+
+Conteúdo: posts em Markdown/MDX (fácil de criar e versionar)
+Estrutura: usa o App Router em app para rotas e layouts
+Componentes: cabeçalho, rodapé, avatar, cards de post e templates reutilizáveis
+Funcionalidades auxiliares: parsing de posts (gray-matter), renderização Markdown/MDX, hooks para
+
+Como rodar localmente:
 
 ```bash
 npm run dev
@@ -15,26 +53,27 @@ pnpm dev
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🎓 Aprendizado
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Neste projeto coloquei em prática e aprofundei diversos conceitos essenciais de desenvolvimento web:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **HTML semântico & Acessibilidade:** estruturação de conteúdo e atenção a marcação semântica para melhor SEO e leitura por leitores de tela.  
+- **CSS / Tailwind CSS:** uso do utility-first, responsividade com breakpoints, organização de estilos e implementação de temas (Dark/Light) com classes e utilitários; inclusão de animações com `tailwindcss-animate` e `tw-animate-css`.  
+- **TypeScript:** tipagem de componentes e dados (ex.: tipos de posts em posts-types.ts), evitando erros em tempo de compilação.  
+- **React:** componentização, composição, gerenciamento de estado e props, além de boas práticas para organizar UI em componentes reutilizáveis.  
+- **Next.js (App Router):** criação de rotas, layouts e páginas dinâmicas com app (ex.: page.tsx e page.tsx), além de fluxo de build/servidor via scripts (package.json).  
+- **Markdown / MDX:** leitura e parsing de conteúdo em posts com `gray-matter`, renderização com `react-markdown` / `next-mdx-remote` e suporte a GFM (`remark-gfm`); implementação da lógica de listagem/geração de posts em posts.ts.  
+- **Hooks e funcionalidades utilitárias:** criação/uso de hooks customizados como os em hooks (`use-clipboard`, `use-share`) para funcionalidades práticas (compartilhar, copiar).  
+- **Ferramentas e qualidade:** configuração e uso de Tailwind + PostCSS, ESLint (configuração Next) e gerenciamento de dependências com `npm`.  
+- **UI/UX e bibliotecas:** integração de bibliotecas de UI e ícones (`@radix-ui`, `@base-ui/react`, `lucide-react`, `@tabler/icons-react`) e helpers de classe como `clsx`, `class-variance-authority` e `tailwind-merge`.  
+- **Workflow e versão:** uso de Git/GitHub para controle de versão, organização do repositório e deploy contínuo (conceitos aplicados).  
+- **Arquitetura e boas práticas:** separar lógica de parsing, componentes e templates (components, `src/styles/templates/`), pensando em reaproveitamento e manutenibilidade.
 
-## Learn More
+Adorei construir esse projeto — ele consolidou muitos conceitos práticos e me deixou motivado a avançar em rotas avançadas do Next.js, testes e otimizações de performance.
 
-To learn more about Next.js, take a look at the following resources:
+## :memo: Licença
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Esse projeto está sob a licença MIT.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-=======
-# projetonext
->>>>>>> b1c9220f8ce2f3cf319ed65513f060e3728052db
